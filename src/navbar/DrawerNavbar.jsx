@@ -15,7 +15,6 @@ function DrawerNavbarButton({ buttonRef, onOpen }) {
             ref={buttonRef} onClick={onOpen}
             icon={<FaBars />}
             _hover={{color: "#49C7FF", bg: "#404040"}}
-            _focus={{color: "#49C7FF"}}
             _active={{color: "#49C7FF"}}
         />
     )
