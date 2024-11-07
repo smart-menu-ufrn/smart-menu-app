@@ -44,11 +44,12 @@ export default function LoginPage() {
             localStorage.setItem("authenticated", authenticated);
             localStorage.setItem("email", email);
             
+            navigate("/dash/users");
+            
             if (!successToast.isActive("successToast")) {
                 successToast({description: "You was successfully authenticated as " + email + "."});
             }
 
-            navigate("/dash")
         } catch {
             if (!errorToast.isActive("errorToast")) {
                 errorToast({description: "Invalid e-mail or password. Please try again."});

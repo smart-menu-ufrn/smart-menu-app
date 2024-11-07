@@ -1,6 +1,6 @@
 import { Button, FormControl } from "@chakra-ui/react";
 
-export function MainButton({ handleClick, label }) {
+export const MainButton = ({ handleClick, label }) => {
 
     return (
         <FormControl>
@@ -16,7 +16,7 @@ export function MainButton({ handleClick, label }) {
     );
 }
 
-export function FooterButton({ handleClick, label }) {
+export const FooterButton = ({ handleClick, label }) => {
 
     return (
         <Button

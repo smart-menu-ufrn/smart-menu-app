@@ -7,7 +7,7 @@ import { FooterButton, MainButton } from "../components/buttons";
 
 export default function RegisterPage() {
     const isMobileScreen = useBreakpointValue(
-        {base: true, lg: false}
+        { base: true, lg: false }
     )
 
     const [email, setEmail] = useState();
@@ -16,7 +16,7 @@ export default function RegisterPage() {
 
     const navigate = useNavigate();
 
-    const errorToast =  useToast(
+    const errorToast = useToast(
         {
             id: 'errorToast',
             title: "Registration failed!",
@@ -42,23 +42,24 @@ export default function RegisterPage() {
 
         if (!passwordsMatches) {
             if (!successToast.isActive("errorToast")) {
-                errorToast({description: "The passwords should matches."});
+                errorToast({ description: "The passwords should matches." });
             }
 
             return;
         }
 
         try {
-            const registeredEmail = await service.register({email, password1});
+            const registeredEmail = await service.register({ email, password1 });
+
+            navigate("/auth/login");
             
             if (!successToast.isActive("successToast")) {
-                successToast({description: "User " + registeredEmail + " successfully registered."});
+                successToast({ description: "User " + registeredEmail + " successfully registered." });
             }
 
-            navigate("/auth/login")
         } catch {
             if (!errorToast.isActive("errorToast")) {
-                errorToast({description: "E-mail already in use. Please try again with another e-mail address."});
+                errorToast({ description: "E-mail already in use. Please try again with another e-mail address." });
             }
         }
     }
@@ -70,7 +71,7 @@ export default function RegisterPage() {
     return (
         <Card
             size="lg"
-            width={isMobileScreen? "xs" : "md"}
+            width={isMobileScreen ? "xs" : "md"}
             variant="elevated"
             bg="black.main" color="white.3"
         >
@@ -86,7 +87,7 @@ export default function RegisterPage() {
                         <EmailInput setEmail={setEmail} />
 
                         <PasswordInput setPassword={setPassword1} />
-                        
+
                         <PasswordInput setPassword={setPassword2} label="Confirm password" />
 
                         <MainButton handleClick={handleRegister} label="Register" />
